@@ -1,0 +1,530 @@
+/* ================== GLOBAL ================== */
+html{scroll-behavior:smooth;}
+body{
+    margin:0;
+    background:#0b0b0b;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+/* THEME COLORS */
+:root{
+    --gold:#c49b63;
+    --gold-glow:rgba(196,155,99,0.6);
+}
+
+/* ================== NAVBAR ================== */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 40px;
+    background:rgba(10,10,10,0.65);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:2px solid var(--gold);
+    transition:0.3s;
+}
+.navbar:hover{box-shadow:0 2px 15px var(--gold-glow);}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo img{height:45px;}
+.logo h2{font-size:18px;color:var(--gold);}
+.navbar nav{display:flex;gap:20px;}
+.navbar nav a{
+    color:white;
+    text-decoration:none;
+    padding:6px 14px;
+    border-radius:6px;
+    border:1px solid var(--gold);
+    transition:0.25s;
+}
+.navbar nav a:hover{
+    background:var(--gold);
+    color:black;
+    box-shadow:0 0 12px var(--gold-glow);
+}
+
+/* ================== HERO / BANNER ================== */
+.hero{position:relative;overflow:hidden;}
+.hero img{width:100%;height:420px;object-fit:cover;position:relative;z-index:0;}
+.hero-overlay{
+    position:absolute;
+    top:0;left:0;width:100%;height:100%;
+    background:linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0));
+    z-index:1;
+    pointer-events:none;
+}
+.hero-text{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    text-align:center;z-index:2;
+}
+.hero-text h1{
+    font-size:48px;margin-bottom:10px;color:white;
+    text-shadow:0 0 1px var(--gold),0 0 3px var(--gold),0 0 2px var(--gold-glow);
+}
+.hero-text p{color:#ddd;}
+
+/* ================== PARTICLES ================== */
+.particles{
+    position:absolute;
+    top:0;left:0;width:100%;height:100%;
+    overflow:hidden;pointer-events:none;z-index:1;
+}
+.particles span{
+    position:absolute;display:block;width:4px;height:4px;
+    background:var(--gold);border-radius:50%;opacity:0.7;
+    animation:float 12s linear infinite, glow 2s ease-in-out infinite alternate;
+    box-shadow:0 0 6px var(--gold);
+}
+/* Random positions & speeds */
+.particles span:nth-child(1){ left:10%; animation-duration:14s; animation-delay:0s;}
+.particles span:nth-child(2){ left:20%; animation-duration:18s; animation-delay:2s;}
+.particles span:nth-child(3){ left:30%; animation-duration:12s; animation-delay:4s; width:6px; height:6px; opacity:0.9;}
+.particles span:nth-child(4){ left:40%; animation-duration:16s; animation-delay:1s;}
+.particles span:nth-child(5){ left:50%; animation-duration:20s; animation-delay:3s;}
+.particles span:nth-child(6){ left:60%; animation-duration:13s; animation-delay:6s;}
+.particles span:nth-child(7){ left:70%; animation-duration:17s; animation-delay:2s; width:6px; height:6px; opacity:0.9;}
+.particles span:nth-child(8){ left:80%; animation-duration:15s; animation-delay:5s;}
+.particles span:nth-child(9){ left:90%; animation-duration:19s; animation-delay:1s;}
+.particles span:nth-child(10){ left:25%; animation-duration:21s; animation-delay:7s;}
+
+@keyframes float{
+0%{ transform:translateY(420px) scale(0.6); opacity:0; }
+10%{ opacity:0.7; }
+90%{ opacity:0.7; }
+100%{ transform:translateY(-50px) scale(1); opacity:0; }
+}
+@keyframes glow{
+from{ box-shadow:0 0 4px var(--gold); }
+to{ box-shadow:0 0 10px var(--gold); }
+}
+
+/* ================== SECTIONS ================== */
+section{padding:80px 20px;text-align:center;}
+section h2{
+    font-size:32px;
+    margin-bottom:20px;
+    font-weight:700;
+}
+section h2::after{
+    content:"";
+    display:block;
+    width:80px;
+    height:3px;
+    margin:10px auto;
+    background:var(--gold);
+}
+
+/* ================== TEAMS GRID ================== */
+.teams{max-width:1100px;margin:auto;}
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:25px;
+    max-width:1000px;
+    margin:40px auto;
+}
+.team-card{
+    background:#141414;
+    padding:16px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.25s;
+    border:1px solid #222;
+    text-align:center;
+}
+.team-card img{width:45px;height:45px;object-fit:contain;}
+.team-card h3{margin-top:10px;font-size:16px;color:#ddd;}
+.team-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--gold);
+    box-shadow:0 0 15px var(--gold-glow);
+}
+.team-card:active{transform:scale(0.96);}
+
+/* ================== ABOUT ================== */
+.about{
+    background:#101010;
+    max-width:800px;
+    margin:80px auto;
+    border-radius:12px;
+    padding:50px;
+    border:1px solid #1d1d1d;
+}
+
+/* ================== FOOTER ================== */
+.footer{
+    display:flex;
+    justify-content:space-around;
+    align-items:flex-start;
+    padding:40px;
+    background:#050505;
+    flex-wrap:wrap;
+    gap:40px;
+    border-top:2px solid var(--gold);
+    text-align:center;
+}
+.footer h3{
+    font-weight:700;
+    margin-bottom:10px;
+    color:var(--gold);
+}
+.footer a{display:block;color:#ccc;text-decoration:none;margin-top:6px;transition:0.2s;}
+.footer a:hover{color:white;}
+.footer i{margin-right:8px;color:var(--gold);}
+.footer-left,.footer-links,.footer-socials{min-width:180px;}
+
+/* ================== TEAM PAGE ================== */
+
+/* Main container */
+.team-header-container {
+    max-width:1000px;
+    margin:60px auto;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* Top section: logo + info */
+.team-header-top {
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+.team-logo-glow {
+    background:rgba(196,155,99,0.1);
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 0 20px rgba(196,155,99,0.5);
+    flex-shrink:0;
+}
+.team-logo-glow img {width:120px;height:120px;}
+
+.team-header-info {
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    justify-content:center;
+}
+.team-header-info h1{
+    font-size:32px;
+    font-weight:700;
+    color:white;
+    margin:0;
+    text-shadow:0 0 8px var(--gold),0 0 16px var(--gold),0 0 24px var(--gold-glow);
+}
+.team-rank{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:600;
+    font-size:16px;
+    padding:6px 12px;
+    border:1px solid var(--gold);
+    border-radius:8px;
+    background:#141414;
+    color:white;
+}
+.team-rank .region-badge{
+    background:var(--gold);
+    color:black;
+    border-radius:4px;
+    padding:2px 6px;
+    font-size:12px;
+    font-weight:700;
+}
+
+/* Bottom info box */
+.team-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #101010;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: left; /* ensures icons align left */
+}
+
+.team-info-box .team-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #ddd;
+}
+
+.team-info-box .team-item i {
+    color: var(--gold);
+    min-width: 20px;
+    text-align: center;
+}
+
+.team-info-box .team-item i{color:var(--gold);min-width:16px;text-align:center;}
+
+/* STAFF & ROSTER layout */
+.team-roster{
+    display:flex;
+    gap:40px;
+    max-width:1000px;
+    margin:40px auto;
+    flex-wrap:wrap;
+}
+.staff-box, .roster-box{
+    background:#101010;
+    border:1px solid #222;
+    border-radius:12px;
+    padding:20px;
+    flex:1;
+    min-width:250px;
+}
+.staff-box h2, .roster-box h2{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:12px;
+    color:white;
+    text-align:left;
+    position:relative;
+    padding-bottom:6px;
+}
+.staff-box h2::after, .roster-box h2::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:50px;
+    height:3px;
+    background:var(--gold);
+}
+
+/* Staff roles headers inside staff box */
+.staff-box .staff-role-header{
+    font-size:14px;
+    font-weight:700;
+    color:var(--gold);
+    margin-top:12px;
+    margin-bottom:6px;
+    border-bottom:1px solid var(--gold);
+    padding-bottom:2px;
+}
+
+/* Staff members list under each role */
+.staff-box .staff-role-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+/* Staff members */
+.staff-box .staff-member{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#141414;
+    border-radius:8px;
+    padding:8px 12px;
+    margin-bottom:8px;
+    transition:0.2s;
+}
+.staff-box .staff-member:hover{
+    box-shadow:0 0 12px var(--gold-glow);
+    border:1px solid var(--gold);
+}
+.staff-box .staff-member img{
+    width:50px;
+    height:50px;
+    border-radius:8px;
+}
+.staff-box .staff-member span{
+    flex:1;
+    font-weight:600;
+    color:white;
+}
+
+/* Roster members */
+.roster-box .player{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#141414;
+    border-radius:8px;
+    padding:8px 12px;
+    margin-bottom:8px;
+    transition:0.2s;
+}
+.roster-box .player:hover{
+    box-shadow:0 0 12px var(--gold-glow);
+    border:1px solid var(--gold);
+}
+.player-icon-container{
+    position:relative;
+    flex-shrink:0;
+    width:50px;
+    height:50px;
+}
+.player-icon-container img:first-child{
+    width:100%;
+    height:100%;
+    border-radius:8px;
+}
+.player-icon-container .role-icon{
+    position:absolute;
+    bottom:-2px;
+    right:-2px;
+    width:16px;
+    height:16px;
+    border-radius:4px;
+    border:1px solid #222;
+}
+.roster-box .player span.name{
+    font-weight:600;
+    color:white;
+    flex:1;
+}
+.roster-box .player span.role{
+    font-size:12px;
+    color:#ccc;
+}
+
+/* ================== RESPONSIVE ================== */
+@media screen and (max-width:900px){
+    .team-header-top{
+        flex-direction:column;
+        align-items:center;
+    }
+    .team-header-info{
+        align-items:center;
+        text-align:center;
+    }
+    .team-roster{
+        flex-direction:column;
+    }
+    .staff-box, .roster-box{
+        min-width:100%;
+    }
+}
+
+/* ===================== STAF ================ */
+
+/* STAFF PAGE STYLING */
+.staff-main-header {
+    text-align:center;
+    padding:60px 20px 40px 20px;
+}
+.staff-main-header h1 {
+    font-size:48px;
+    color: white;
+    text-shadow: 0 0 8px var(--gold),0 0 16px var(--gold-glow);
+}
+.staff-main-header p {
+    font-size:18px;
+    color:#ccc;
+    margin-top:10px;
+}
+
+/* STAFF SECTIONS */
+.staff-section {
+    max-width:1000px;
+    margin:60px auto;
+    text-align:center;
+}
+.staff-section h2 {
+    font-size:32px;
+    color:white;
+    margin-bottom:8px;
+    position:relative;
+}
+.staff-section h2::after {
+    content:"";
+    display:block;
+    width:80px;
+    height:3px;
+    background:var(--gold);
+    margin:6px auto 0 auto;
+}
+.staff-section p {
+    color:#ccc;
+    margin-bottom:30px;
+}
+
+/* STAFF GRID */
+.staff-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* STAFF CARD */
+.staff-card {
+    background: #141414;
+    border-radius: 12px;
+    padding: 12px 16px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: 0.25s;
+}
+
+.staff-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: 0.2s;
+}
+
+.staff-card img:hover {
+    box-shadow: 0 0 15px var(--gold-glow);
+}
+
+.staff-card .staff-info {
+    display: flex;
+    flex-direction: column; /* vertical stacking */
+    justify-content: center;
+    gap: 3px;
+}
+
+.staff-card .staff-info h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.staff-card .staff-info p {
+    font-size: 12px;
+    color: #ccc;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Responsive */
+@media screen and (max-width: 800px) {
+    .staff-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* STAFF CARD HOVER EFFECT */
+.staff-card {
+    transition: 0.25s, box-shadow 0.25s;
+}
+
+.staff-card:hover {
+    box-shadow: 0 0 15px var(--gold-glow);
+    border: 1px solid var(--gold);
+}
+
+/* Reduce gap between cards slightly */
+.staff-grid {
+    gap: 10px; /* was 12px before */
+}
+
